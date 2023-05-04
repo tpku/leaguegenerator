@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -10,13 +11,17 @@ const StyledNav = styled.nav`
 `;
 
 const Nav = (props) => {
-    const { title, children } = props;
+    const { title, validate, children } = props;
     return (
         <StyledNav>
             <div>
                 <h1>{title}</h1>
             </div>
-            <div>{children}</div>
+            <div>
+                <Link to="/">Home</Link>
+                {!validate ? <></> : <Link to="/search">Search</Link>}
+                <Link to="/about">About</Link>
+            </div>
         </StyledNav>
     );
 };
