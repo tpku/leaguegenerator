@@ -129,10 +129,9 @@ const Search = (props) => {
     const getCountryLeagues = (e) => {
         e.preventDefault();
         if (searchKey && searchKey != "") {
-            console.log(searchKey);
-            console.log(process.env.REACT_APP_API_KEY);
+            console.log({ searchKey });
 
-            const fetcher = () => {
+            const foo = async function () {
                 const options = {
                     method: "GET",
                     headers: {
@@ -141,15 +140,18 @@ const Search = (props) => {
                     },
                 };
 
-                fetch(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${searchKey}&type=league`, options)
-                    .then((response) => response.json())
-                    .then((response) => setLeagues(response.response))
-                    .catch((err) => console.error({ err }));
+                try {
+                    const response = await fetch(`https://api-football-v1.p.rapidapi.com/v3/leagues?country=${searchKey}`, options);
+                    const data = await response.json();
+                    console.log(data);
+                } catch (err) {
+                    console.log({ err });
+                }
             };
-            return fetcher();
+
+            const boo = foo();
+            console.log(boo);
         }
-        console.log({ leagues });
-        console.log({ searchKey });
     };
 
     // const renderLeagues = (object) => {
@@ -162,15 +164,15 @@ const Search = (props) => {
     //     }
     // };
 
-    const renderLeagues = () => {
-        if (leagues) {
-            return leagues.map((leagueItem) => (
-                <option key={leagueItem.league.id} value={leagueItem.league.id}>
-                    {leagueItem.league.name}
-                </option>
-            ));
-        }
-    };
+    // const renderLeagues = () => {
+    //     if (searchKey && leagues) {
+    //         return leagues.map((leagueItem) => (
+    //             <option key={leagueItem.league.id} value={leagueItem.league.id}>
+    //                 {leagueItem.league.name}
+    //             </option>
+    //         ));
+    //     }
+    // };
 
     const renderCountries = (object) => {
         if (object) {
@@ -193,7 +195,7 @@ const Search = (props) => {
 
             <Form onSubmit={getCountryLeagues}>
                 <span>1</span>
-                <button onClick={(e) => (toggleCountry ? setToggleCountry(false) : setToggleCountry(true))}>⚈</button>
+                <button onClick={(e) => (e.preventDefault(), toggleCountry ? setToggleCountry(false) : setToggleCountry(true))}>⚈</button>
                 {toggleCountry ? (
                     <select placeholder="Search country" value={searchKey} onChange={(e) => setSearchKey(e.target.value)}>
                         {countries ? renderCountries(countries) : <option></option>}
@@ -209,9 +211,7 @@ const Search = (props) => {
             </Form>
 
             {leagues ? (
-                <Form>
-                    <select>{leagues ? renderLeagues() : <option>{searchKey} is not a valid country</option>}</select>
-                </Form>
+                <Form>{/* <select>{leagues ? renderLeagues() : <option>{searchKey} is not a valid country</option>}</select> */}</Form>
             ) : (
                 // <Form>
                 //     <select>{leagues ? renderLeagues(leagues) : <option>{searchKey} is not a valid country</option>}</select>
