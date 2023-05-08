@@ -13,19 +13,15 @@ function App() {
     const [sendKey, setSendKey] = useState("");
     const [validate, setValidate] = useState(false);
 
-    // useEffect(() => {}, [validate]);
-
+    console.log("APP: " + validate);
     return (
         <BrowserRouter>
             <div className="App">
-                <Nav title="FusbApp League Generator" validate={validate} />
+                <Nav title="FusbApp 2000" validate={validate} setSendLogout={setValidate} />
                 <MainWrapper>
-                    <h4>This is the main wrapper</h4>
-                    {validate ? <p>True</p> : <p>False</p>}
+                    {/* {validate ? <p>True</p> : <p>False</p>} */}
                     <Routes>
-                        {/* <Route path="/" element={<Login token={token} setToken={setToken} hide={true} />} />
-                        <Route path="/search" element={<Search token={token} />} /> */}
-                        <Route path="/" element={<Home setValidate={setValidate} setSendKey={setSendKey} exact />} />
+                        <Route path="/" element={validate ? <Navigate to="/search" replace /> : <Home setValidate={setValidate} setSendKey={setSendKey} exact />} />
                         <Route path="/search" element={validate ? <Search sendKey={sendKey} /> : <Navigate to="/" replace />} />
                         <Route path="/about" element={<About />} />
                     </Routes>
