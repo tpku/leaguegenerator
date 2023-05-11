@@ -2,8 +2,8 @@
 
 This is a web application that allows you to follow and compare football clubs from around the world.
 
-<img width="500" alt="Screenshot FusbApp start page" src="https://github.com/tpku/leaguegenerator/assets/112587454/0b623adc-77a9-4e39-bc31-8e3528654827">
-<img width="500" alt="Screenshot FusbApp search page" src="https://github.com/tpku/leaguegenerator/assets/112587454/f5ffef3f-3386-4060-a675-dbdd34a8d3b3">
+<img width="1000" alt="Screenshot FusbApp start page" src="https://github.com/tpku/leaguegenerator/assets/112587454/0b623adc-77a9-4e39-bc31-8e3528654827">
+<img width="1000" alt="Screenshot FusbApp search page" src="https://github.com/tpku/leaguegenerator/assets/112587454/f5ffef3f-3386-4060-a675-dbdd34a8d3b3">
 
 ## About
 School project, React Assignment: Create a small web application with a nice graphical user interface using ReactJS, which includes at least three react components, uses state and props, makes at least one API call, and is error-free.
