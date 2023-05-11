@@ -8,8 +8,8 @@ import RenderTeamComparison from "../components/RenderTeamComparison";
 import CompareTeamData from "../components/RenderStatsCalculation/RenderStatsCalculation";
 
 /* ---- Test Data || Start ---- */
-import testDataLeagues from "../json/leagueData.json";
-import testDataLeagueStanding from "../json/leagueStanding.json";
+// import testDataLeagues from "../json/leagueData.json";
+// import testDataLeagueStanding from "../json/leagueStanding.json";
 /* ---- Test Data || End ---- */
 
 /* ---- Styled Components ---- */
@@ -83,6 +83,8 @@ const ListWrapper = styled.div`
     }
 
     span > div {
+        width: 100%;
+        height: 100%;
         position: absolute;
         display: flex;
         justify-content: center;
@@ -91,10 +93,9 @@ const ListWrapper = styled.div`
 
     span > div > img {
         display: flex;
-        padding-top: 1rem;
-        width: 65%;
+        max-height: 65%;
         object-position: center;
-        object-fit: cover;
+        object-fit: contain;
     }
 `;
 const StandingList = styled.ul`
@@ -560,10 +561,10 @@ const Search = (props) => {
         }
     };
 
+    useEffect(() => {}, [leagues]);
+
     const getLeagueStanding = (id) => {
         if (id && leagues != 0) {
-            console.log(id);
-
             /* ---- ONLY FOR TEST DATA ---- */
             // if (id == 39) {
             //     setLeagueStanding(testDataLeagueStanding.response[0].league);
@@ -655,7 +656,7 @@ const Search = (props) => {
         }
     };
 
-    const { sendKey } = props;
+    // const { sendKey } = props;
     return (
         <MainContainer>
             {/* <p>{api_key}</p> */}
@@ -716,9 +717,9 @@ const Search = (props) => {
                                 <li
                                     onClick={(e) => {
                                         if (firstTeam == 0) {
-                                            return console.log("First" + standing.team.id), setFirstTeam(standing);
+                                            return setFirstTeam(standing);
                                         } else {
-                                            return console.log("Second" + standing.team.id), setSecondTeam(standing);
+                                            return etSecondTeam(standing);
                                         }
                                     }}
                                     key={standing.team.id}
@@ -750,9 +751,9 @@ const Search = (props) => {
                                 <li
                                     onClick={(e) => {
                                         if (firstTeam == 0) {
-                                            return console.log("First" + standing.team.id), setFirstTeam(standing);
+                                            return setFirstTeam(standing);
                                         } else {
-                                            return console.log("Second" + standing.team.id), setSecondTeam(standing);
+                                            return setSecondTeam(standing);
                                         }
                                     }}
                                     key={standing.team.id}

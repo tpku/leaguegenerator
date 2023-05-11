@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
+/* ---- Components ---- */
+import PageWrapper from "../components/PageWrapper/PageWrapper";
+import Heading from "../components/Heading";
+import TextContent from "../components/TextContent";
 
+/* Styled Components */
 const LoginContainer = styled.div`
-    /* min-height: 100vh; */
     max-width: 500px;
     padding: 0.5rem;
     display: flex;
@@ -148,27 +145,15 @@ const LoginContainer = styled.div`
     }
 `;
 
-const LoginHeading = styled.h2`
-    font-size: 5rem;
-    line-height: 0.9;
-    font-weight: 200;
-    font-style: italic;
-    pointer-events: none;
-`;
-
-const LoginText = styled.p`
-    font-size: 0.8rem;
-    pointer-events: none;
-    letter-spacing: 0.2px;
-`;
-
 const Home = (props) => {
-    const { children, setSendKey, setValidate } = props;
-    const api_key = process.env.REACT_APP_API_KEY;
-
+    const { children, setValidate } = props;
+    /* ---- Set visitor from input ---- */
     const [visitor, setVisitor] = useState("");
-    const [placeHolder, setPlaceHolder] = useState("John Doe");
+    /* ---- "Validation" check if input is okey ---- */
     const [validation, setValidation] = useState(false);
+    /* ---- Set placeholder default and update content ---- */
+    const [placeHolder, setPlaceHolder] = useState("John Doe");
+    /* ---- Toggle "login" card animation ---- */
     const [loginAnimation, setLoginAnimation] = useState("openLogin");
 
     const validateVisitor = (e) => {
@@ -182,7 +167,6 @@ const Home = (props) => {
             /* Valid Input */
             console.log("Welcome " + visitor.charAt(0).toUpperCase() + visitor.slice(1));
             setValidation(true);
-            // setSendKey(api_key);
         } else {
             /* Not Valid Input */
             setPlaceHolder("Woah! Wacha name?");
@@ -195,27 +179,26 @@ const Home = (props) => {
             setLoginAnimation("closeLogin");
             const delay = setTimeout(() => {
                 setValidate(validation);
-                console.log("HOME: " + validation);
             }, 2000);
             return () => clearTimeout(delay);
         }
     }, [validation]);
 
     return (
-        <Wrapper>
+        <PageWrapper>
             <LoginContainer loginAnimation={loginAnimation}>
-                <LoginHeading>Welcome to FusbApp 2000</LoginHeading>
-                <LoginText>
-                    Please enter your name to start using FusbApp. Aren't you as eager as I am to find out about and compare all football clubs all around the world? Let's get to it! Wacha name?
-                </LoginText>
-                {/* <p>{api_key}</p> */}
+                <Heading>Welcome to FusbApp 2000</Heading>
+                <TextContent>
+                    Welcome to FusbApp! To get started, please enter your name below. Are you excited to learn about and compare football clubs from around the world? We certainly are! Let's dive in
+                    and discover the best football clubs together. So, Wacha name?
+                </TextContent>
                 <form onSubmit={validateVisitor}>
                     <input placeholder={placeHolder} type="text" value={visitor} onChange={(e) => setVisitor(e.target.value.trim())} />
                     <button type="submit">☯︎</button>
                 </form>
                 {children}
             </LoginContainer>
-        </Wrapper>
+        </PageWrapper>
     );
 };
 
