@@ -66,7 +66,6 @@ const MenuItem = styled.li`
 const Nav = (props) => {
     const { title, validate, setSendLogout } = props;
     const [logout, setLogout] = useState(false);
-    console.log("NAV: " + validate);
 
     const logoutVisitor = () => {
         setSendLogout(logout);
