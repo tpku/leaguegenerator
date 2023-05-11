@@ -676,17 +676,6 @@ const Search = (props) => {
             </Form>
 
             {leagues != 0 ? (
-                /* ---- REAL DATA ---- */
-                <Form>
-                    <span>
-                        2 <p>LEAGUE</p>
-                    </span>
-                    <div className="filler"></div>
-                    <select value={selectedLeague} onChange={(e) => setSelectedLeague(e.target.value)}>
-                        {leagues ? renderLeagues() : <></>}
-                    </select>
-                </Form>
-            ) : (
                 /* ---- ONLY FOR TEST DATA ---- */
                 // <Form>
                 //     <span>
@@ -698,6 +687,17 @@ const Search = (props) => {
                 //         //{" "}
                 //     </select>
                 // </Form>
+                /* ---- REAL DATA ---- */
+                <Form>
+                    <span>
+                        2 <p>LEAGUE</p>
+                    </span>
+                    <div className="filler"></div>
+                    <select value={selectedLeague} onChange={(e) => setSelectedLeague(e.target.value)}>
+                        {leagues ? renderLeagues() : <></>}
+                    </select>
+                </Form>
+            ) : (
                 <></>
             )}
 
