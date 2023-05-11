@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -36,10 +35,6 @@ const StyledNav = styled.header`
         animation: neonEffect 0.3s linear infinite forwards;
     }
 
-    :hover NavBackground {
-        height: 5vh;
-    }
-
     @keyframes neonEffect {
         0% {
             color: #e0fff6;
@@ -68,25 +63,13 @@ const MenuItem = styled.li`
     font-size: 1rem;
 `;
 
-const NavBackground = styled.div`
-    width: 100%;
-    height: 5vh;
-    /* background-color: #080f0d; */
-    position: absolute;
-    top: 0;
-    z-index: 0;
-`;
-
 const Nav = (props) => {
-    const { title, validate, children, setSendLogout } = props;
+    const { title, validate, setSendLogout } = props;
     const [logout, setLogout] = useState(false);
     console.log("NAV: " + validate);
 
     const logoutVisitor = () => {
-        // console.log("Logout");
-        // console.log(validate);
         setSendLogout(logout);
-        // console.log({ logout });
     };
 
     return (
@@ -113,7 +96,6 @@ const Nav = (props) => {
                     <></>
                 )}
             </StyledNav>
-            <NavBackground />
         </>
     );
 };
