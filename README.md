@@ -11,7 +11,6 @@ School project, React Assignment: Create a small web application with a nice gra
 Built with ReactJS.
 
 ## Setup
-To use FusbApp league generator, follow these simple steps:
 
 1. Fork the FusbApp repository to your own account.
 2. Clone the forked repository to your local machine. Use the CLI or "Open with GitHub Desktop".
@@ -30,9 +29,8 @@ cd leaguegenerator
   ```
 REACT_APP_API_KEY=your-access-key-here
 ```
-__NOTE:__ You will need to sign up for a RapidAPI account and create an App, subscribe to the API-FOOTBALL API to obtain an access key.
-<br>
-*If you prefer to use static test data instead of dynamic data fetched from an API, you can uncomment the section from 'REAL DATA' to 'ONLY FOR TEST DATA' in the code and select England as the country in the dropdown menu.*
+>__NOTE:__ You will need to sign up for a RapidAPI account and create an App, subscribe to the API-FOOTBALL API to obtain an access key.
+<br>If you prefer to use static test data instead of dynamic data fetched from an API, you can uncomment the section from 'REAL DATA' to 'ONLY FOR TEST DATA' in the code and select England as the country in the dropdown menu.*
 
 
 6. Start the development server.
