@@ -3,16 +3,19 @@ import styled from "styled-components";
 
 const StyledDiv = styled.div`
     width: 100%;
+    height:3.5rem;
     min-width: 10vw;
     display: flex;
     justify-content: space-between;
     background-color: #131414;
     gap: 0.5rem;
     font-size: 1rem;
-
+    text-align: center;
+    padding:0.2rem;
     p {
         width: 50%;
         text-align: center;
+    
     }
 `;
 
