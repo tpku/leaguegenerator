@@ -20,8 +20,10 @@ const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     background-color: #080f0d;
+    /* background-color: #131414; */
     color: #e0f5f1;
     box-sizing: border-box;
 
@@ -45,10 +47,12 @@ const ListWrapper = styled.div`
     width: 100%;
     max-width: 1400px;
     height: 100px;
+    /* border-radius: 2px; */
     display: flex;
     overflow: hidden;
     position: relative;
     background-color: #131414;
+    /* background-color: #080f0d; */
 
     span {
         aspect-ratio: 1 / 1;
@@ -201,6 +205,7 @@ const Form = styled.form`
     width: 100%;
     max-width: 1400px;
     height: 100px;
+    border-radius: 2px;
     display: flex;
     justify-content: end;
     overflow: hidden;
